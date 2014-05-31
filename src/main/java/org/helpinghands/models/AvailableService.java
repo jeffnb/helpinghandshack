@@ -1,6 +1,8 @@
 package org.helpinghands.models;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Entity;
+
+import javax.persistence.Id;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,4 +35,6 @@ public class AvailableService {
     public void setService(String service) {
         this.service = service;
     }
+
+
 }

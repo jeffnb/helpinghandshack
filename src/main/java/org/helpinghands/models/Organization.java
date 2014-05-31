@@ -1,6 +1,6 @@
 package org.helpinghands.models;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +11,7 @@ import java.net.URL;
  * Created by ocx on 5/31/14.
  */
 @Entity
-public class Organizations {
+public class Organization {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
