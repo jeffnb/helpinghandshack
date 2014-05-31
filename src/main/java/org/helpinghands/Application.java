@@ -5,6 +5,7 @@ import org.helpinghands.models.AvailableService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableAutoConfiguration
+@ComponentScan
 public class Application {
 
 
@@ -23,7 +25,7 @@ public class Application {
 
         //Create a few service tags
         AvailableService as = new AvailableService();
-        as.setService("Foo");
+        as.setService("Food");
         asRepository.save(as);
 
         AvailableService as2 = new AvailableService();

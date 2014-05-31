@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  */
 @Configuration
 @EnableMongoRepositories
-public class AppConfig extends AbstractMongoConfiguration{
+public class MongoConfig extends AbstractMongoConfiguration{
     @Override
     protected String getDatabaseName() {
         return "helpinghands";
