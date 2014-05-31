@@ -94,4 +94,11 @@ public class Event {
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Event[id=%d, name='%s']",
+                id, name);
+    }
 }

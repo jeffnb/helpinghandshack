@@ -1,6 +1,5 @@
 package org.helpinghands.models;
 
-
 import org.springframework.data.annotation.Id;
 
 /**
@@ -30,4 +29,10 @@ public class AvailableService {
     }
 
 
+    @Override
+    public String toString() {
+        return String.format(
+                "AvailableService[id=%d, service='%s']",
+                id, service);
+    }
 }
