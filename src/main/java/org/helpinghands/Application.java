@@ -19,9 +19,11 @@ public class Application {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class);
         AvailableServiceRepository asRepository = context.getBean(AvailableServiceRepository.class);
 
+        asRepository.deleteAll();
+
         //Create a few service tags
         AvailableService as = new AvailableService();
-        as.setService("Food");
+        as.setService("Foo");
         asRepository.save(as);
 
         AvailableService as2 = new AvailableService();

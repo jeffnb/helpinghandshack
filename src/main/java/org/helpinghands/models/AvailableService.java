@@ -1,30 +1,23 @@
 package org.helpinghands.models;
 
-import javax.persistence.Entity;
 
-import javax.persistence.Id;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import org.springframework.data.annotation.Id;
 
 /**
  * Created by ocx on 5/31/14.
  */
-@Entity
 public class AvailableService {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private String id;
 
     private String service;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
