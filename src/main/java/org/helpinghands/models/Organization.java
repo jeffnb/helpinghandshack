@@ -98,7 +98,7 @@ public class Organization {
     @Override
     public String toString() {
         return String.format(
-                "Organization[id=%d, name='%s']",
+                "Organization[id=%s, name='%s']",
                 id, name);
     }
 }

@@ -32,7 +32,7 @@ public class AvailableService {
     @Override
     public String toString() {
         return String.format(
-                "AvailableService[id=%d, service='%s']",
+                "AvailableService[id=%s, service='%s']",
                 id, service);
     }
 }

@@ -98,7 +98,7 @@ public class Event {
     @Override
     public String toString() {
         return String.format(
-                "Event[id=%d, name='%s']",
+                "Event[id=%s, name='%s']",
                 id, name);
     }
 }
