@@ -5,13 +5,17 @@ import org.helpinghands.models.AvailableService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
  * Created by ocx on 5/31/14.
  */
 @Configuration
 @EnableAutoConfiguration
+@EnableWebMvc
+@ComponentScan
 public class Application {
 
 
@@ -38,6 +42,7 @@ public class Application {
         for(AvailableService service : services){
             System.out.println(service);
         }
+
     }
 
 }
