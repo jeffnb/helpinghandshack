@@ -1,29 +1,28 @@
 package org.helpinghands.models;
 
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import java.net.URL;
 
 /**
- * Created by ocx on 5/31/14.
+ * Created by Kelly on 5/31/14.
  */
 @Entity
-public class Organization {
+public class Event {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue
     private int id;
 
     private String name;
-    private String hours;
+    private String datetime;
 
     private URL website;
-    private String phone;
-    private String email;
-    private String address;
+    private String descriptionShort;
+    private String descriptionLong;
+    private double cost;
 
     private double latitude;
     private double longitude;
@@ -44,12 +43,12 @@ public class Organization {
         this.name = name;
     }
 
-    public String getHours() {
-        return hours;
+    public String getDatetime() {
+        return datetime;
     }
 
-    public void setHours(String hours) {
-        this.hours = hours;
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
     }
 
     public URL getWebsite() {
@@ -60,28 +59,28 @@ public class Organization {
         this.website = website;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getDescriptionShort() {
+        return descriptionShort;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setDescriptionShort(String descriptionShort) {
+        this.descriptionShort = descriptionShort;
     }
 
-    public String getEmail() {
-        return email;
+    public String getDescriptionLong() {
+        return descriptionLong;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDescriptionLong(String descriptionLong) {
+        this.descriptionLong = descriptionLong;
     }
 
-    public String getAddress() {
-        return address;
+    public double getCost() {
+        return cost;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setCost(double cost) {
+        this.cost = cost;
     }
 
     public double getLatitude() {
