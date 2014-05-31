@@ -1,12 +1,9 @@
 package org.helpinghands.models;
 
 import javax.persistence.Entity;
-
-import javax.persistence.Id;
-
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Created by ocx on 5/31/14.
@@ -37,4 +34,10 @@ public class AvailableService {
     }
 
 
+    @Override
+    public String toString() {
+        return String.format(
+                "AvailableService[id=%d, service='%s']",
+                id, service);
+    }
 }
