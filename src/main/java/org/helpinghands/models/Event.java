@@ -1,6 +1,7 @@
 package org.helpinghands.models;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +14,7 @@ import java.net.URL;
 public class Event {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
     private String name;
