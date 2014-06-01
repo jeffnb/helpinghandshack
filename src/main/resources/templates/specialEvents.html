@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="author" content=" " />
+    <meta name="description" content="Special Events"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <title>Special Events</title>
+
+    <!-- Stylesheets -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/assets/css/style.css" rel="stylesheet"/>
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700%7cOpen+Sans:400,300,700' rel='stylesheet' type='text/css'/>
+
+    <!-- jQuery Files -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+    <!-- Royal Preloader -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/royal_preloader.css" />
+    <script type="text/javascript" src="/assets/js/royal_preloader.min.js"></script>
+
+
+</head>
+<body class="center">
+
+    <span th:text="${events}">Special Events</span>
+
+    <table>
+        <tr th:each="item : ${allData}">
+            <td th:text="${item}">Item</td>
+        </tr>
+    </table>
+</body>
+</html>
