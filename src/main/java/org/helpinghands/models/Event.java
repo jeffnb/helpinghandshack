@@ -4,6 +4,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.geo.Point;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Kelly on 5/31/14.
@@ -20,6 +22,8 @@ public class Event {
     private String descriptionShort;
     private String descriptionLong;
     private double cost;
+
+    private List<String> services = new ArrayList<String>();
 
     private Point location;
 
@@ -89,6 +93,18 @@ public class Event {
 
     public void setCost(double cost) {
         this.cost = cost;
+    }
+
+    public List<String> getServices() {
+        return services;
+    }
+
+    public void setServices(List<String> services) {
+        this.services = services;
+    }
+
+    public void addService(String service){
+        this.services.add(service);
     }
 
     @Override

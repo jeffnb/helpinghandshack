@@ -5,6 +5,8 @@ import org.springframework.data.geo.Point;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ocx on 5/31/14.
@@ -21,6 +23,8 @@ public class Organization {
     private String phone;
     private String email;
     private String address;
+
+    private List<String> services = new ArrayList<String>();
 
     private Point location;
 
@@ -98,6 +102,18 @@ public class Organization {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<String> getServices() {
+        return services;
+    }
+
+    public void setServices(List<String> services) {
+        this.services = services;
+    }
+
+    public void addService(String service){
+        this.services.add(service);
     }
 
     @Override

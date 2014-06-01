@@ -49,6 +49,7 @@ public class Application {
         o1.setName("Helping Hands - 1");
         o1.setPhone("(702) 555-1212");
         o1.setWebsite("http://disney.com");
+        o1.addService("Food");
         organizationRepository.save(o1);
 
 
@@ -60,6 +61,7 @@ public class Application {
         o2.setName("Catholic Charities - 2");
         o2.setPhone("(702) 555-1212");
         o2.setWebsite("http://disney.com");
+        o2.addService("Education");
         organizationRepository.save(o2);
 
         Organization o3 = new Organization();
@@ -70,6 +72,7 @@ public class Application {
         o3.setName("Goodwill - 3");
         o3.setPhone("(702) 555-1212");
         o3.setWebsite("http://disney.com");
+        o3.addService("Health");
         organizationRepository.save(o3);
 
         Organization o4 = new Organization();
@@ -80,6 +83,7 @@ public class Application {
         o4.setName("Helping Hands - 4");
         o4.setPhone("(702) 555-1212");
         o4.setWebsite("http://disney.com");
+        o4.addService("Child Care");
         organizationRepository.save(o4);
 
         Organization o5 = new Organization();
@@ -90,6 +94,7 @@ public class Application {
         o5.setName("Helping Hands - 5");
         o5.setPhone("(702) 555-1212");
         o5.setWebsite("http://disney.com");
+        o5.addService("Health");
         organizationRepository.save(o5);
 
         //Let's play with data
