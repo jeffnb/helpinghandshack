@@ -13,6 +13,7 @@ import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Metrics;
 import org.springframework.data.geo.Point;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -108,8 +109,22 @@ public class Application {
 
         Iterable<Organization> o = organizationRepository.findByLocationNear(new Point(-115.213341,36.066634),
                 new Distance(1, Metrics.MILES));
+
         System.out.println("Organizations within a mile");
         for(Organization org : o){
+            System.out.println(org);
+        }
+
+        List<Organization> rval= new ArrayList<Organization>();
+
+        for(Organization org : o){
+            if(org.getServices().contains("Health")){
+                rval.add(org);
+            }
+        }
+
+        System.out.println("Organizations within a mile of service Health");
+        for(Organization org : rval){
             System.out.println(org);
         }
 
