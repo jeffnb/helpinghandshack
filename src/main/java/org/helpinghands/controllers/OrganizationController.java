@@ -31,18 +31,19 @@ public class OrganizationController { //--->   /organizations/{service}?lat=x&lo
                                                @RequestParam(value = "dist", required = true) double miles){
 
         Point point = new Point(longitude, latitude);
-        Distance distance = new Distance(miles);
+        Distance distance = new Distance(miles, Metrics.MILES);
 
         List<Organization> rval= new ArrayList<Organization>();
 
         Iterable<Organization> o = organizationRepository.findByLocationNear(point, distance);
-//        for(Organization org : o){
-//            if(org.getServices().contains(service)){
-//                rval.add(org);
-//            }
-//        }
 
-        return o;
+        for(Organization org : o){
+            if(org.getServices().contains(service) || service.equals("All")){
+                rval.add(org);
+            }
+        }
+
+        return rval;
     }
 }
 

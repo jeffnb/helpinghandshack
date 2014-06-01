@@ -34,7 +34,7 @@
   var map;
   $('document').ready(function () {
 
-      getJSONCharities('food', 1);
+      getJSONCharities('All', 1, currentLocation.lat, currentLocation.lng);
 
       $("#selDistance").change(function () {
           resetMap();
@@ -65,6 +65,14 @@
 
   function resetMap() {
       google.maps.event.trigger(map, 'resize');
+      if ($("#selDistance").val()) {
+          radius = $("#selDistance").val();
+      }
+
+      var serviceSelected = $("#selService").val();
+
+      getJSONCharities(serviceSelected, radius, currentLocation.lat, currentLocation.lng);
+
       initialize();
   }
 
@@ -97,6 +105,10 @@
           radius = $("#selDistance").val();
       }
 
+      var serviceSelected = $("#selService").val();
+
+
+
       mapCenter = new google.maps.LatLng(currentLocation.lat, currentLocation.lng);
 
       var mapOptions = {
@@ -105,8 +117,6 @@
       };
       map = new google.maps.Map(document.getElementById('map-canvas'),
           mapOptions);
-
-      var serviceSelected = $("#selService").val();
 
       for (i = 0; i < charities.length; i++) {
 
@@ -146,14 +156,15 @@
 
   } // initialize()
 
-  function getJSONCharities(charityService, radius) {
-      $.getJSON("/organizations/service/" + charityService + "?lat=36.165754&long=-115.147878&dist=" + radius, function (data) {
+  function getJSONCharities(charityService, radius, lat, lng) {
+      $.getJSON("/organizations/service/" + charityService + "?lat=" + lat + "&long=" + lng + "&dist=" + radius, function (data) {
 
+          charities = [];
           $.each(data, function (key, val) {
               charities.push(val);
           });
 
-          resetMap();
+          initialize();
       });
   }
 
