@@ -352,7 +352,8 @@ hr {
 
 /* =Summary
 -------------------------------------------------------------- */
-.summary { padding: 120px 0 120px 0; background-color: #f1f1f1; text-align: center; }
+.summary { padding: 20px 0 20px 0; background-color: #f1f1f1; text-align: center; }
+.orgInfo { text-align: left}
 
 /* =Quick Services
 -------------------------------------------------------------- */
@@ -519,7 +520,7 @@ span.portfolio-hover span {
 
 .project-description {
 	font-size: 16px;
-	color: ##545454;
+	color: #545454;
 }
 
 .modal h4 {
