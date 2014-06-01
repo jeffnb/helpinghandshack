@@ -104,12 +104,12 @@ public class Application {
 
         System.out.println();
 
-//        Iterable<Organization> o = organizationRepository.findByLocationNear(new Point(36.066634, -115.213341),
-//                new Distance(1, Metrics.MILES));
-//        System.out.println("Organizations within a mile");
-//        for(Organization org : o){
-//            System.out.println(org);
-//        }
+        Iterable<Organization> o = organizationRepository.findByLocationNear(new Point(-115.213341,36.066634),
+                new Distance(1, Metrics.MILES));
+        System.out.println("Organizations within a mile");
+        for(Organization org : o){
+            System.out.println(org);
+        }
 
     }
 

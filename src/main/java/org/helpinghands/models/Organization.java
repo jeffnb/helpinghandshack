@@ -33,7 +33,7 @@ public class Organization {
     }
 
     public void setLocation(double latitude, double longitude){
-        this.location = new Point(latitude, longitude);
+        this.location = new Point(longitude, latitude);
     }
 
     public String getId() {
