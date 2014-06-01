@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Organizations</title>
+</head>
+<body>
+    <p th:text="${ org.name }">Name</p>
+    <p th:text="${ org.address }">Address</p>
+    <p th:text="${ org.hours }">Hours</p>
+    <p th:text="${ org.phone }">Phone</p>
+    <a href="@{ org.website }"><span th:text="${org.website}">Website</span></a>
+
+
+</body>
+</html>

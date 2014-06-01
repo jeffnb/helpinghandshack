@@ -19,25 +19,26 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/organizations")
-public class OrganizationController {
+public class OrganizationController { //--->   /organizations/{service}?lat=x&long=y&dist=z
 
     @Autowired
     OrganizationRepository organizationRepository;
 
     @RequestMapping("/service/{service}")
-    public List<Organization> getOrganizations(@PathVariable String service,
+    public Iterable<Organization> getOrganizations(@PathVariable String service,
                                                @RequestParam(value = "lat", required = true) double latitude,
                                                @RequestParam(value = "long", required = true) double longitude,
                                                @RequestParam(value = "dist", required = true) double miles){
 
-        Point point = new Point(latitude, longitude);
+        Point point = new Point(longitude, latitude);
         Distance distance = new Distance(miles, Metrics.MILES);
 
         List<Organization> rval= new ArrayList<Organization>();
 
         Iterable<Organization> o = organizationRepository.findByLocationNear(point, distance);
+
         for(Organization org : o){
-            if(org.getServices().contains(service)){
+            if(org.getServices().contains(service) || service.equals("All")){
                 rval.add(org);
             }
         }

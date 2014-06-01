@@ -3,74 +3,12 @@
       lng: -115.147878
   }; // default of Las Vegas center 36.165754, -115.147878
 
+  var healthMarker = "/assets/img/health.png",
+      shelterMarker = "/assets/img/shelter.jpg",
+      foodMarker = "/assets/img/food.jpg",
+      child_careMarker = "/assets/img/child_care.jpg";
+
   var charities = [];
-  var charity = {
-      name: 'charity 1',
-      siteURL: 'http://google.com',
-      locate: {
-          lat: 36.165,
-          lng: -115.145
-      },
-      hoursOfOperation: '10am to 5pm',
-      phone: '702-555-1212',
-      email: 'a@char1.com',
-      service: 'food'
-  }
-  charities.push(charity);
-
-  charity = {
-      name: 'charity 2',
-      siteURL: 'http://yahoo.com',
-      locate: {
-          lat: 36.16,
-          lng: -115.14
-      },
-      hoursOfOperation: '11am to 5pm',
-      phone: '702-555-1213',
-      email: 'a@char2.com',
-      service: 'food'
-  }
-  charities.push(charity);
-
-  var charity = {
-      name: 'health 1',
-      siteURL: 'http://google.com',
-      locate: {
-          lat: 36.175,
-          lng: -115.145
-      },
-      hoursOfOperation: '10am to 5pm',
-      phone: '702-555-1212',
-      email: 'health@char1.com',
-      service: 'health'
-  }
-  charities.push(charity);
-  var charity = {
-      name: 'charity health 2',
-      siteURL: 'http://google.com',
-      locate: {
-          lat: 36.165,
-          lng: -115.145
-      },
-      hoursOfOperation: '10am to 5pm',
-      phone: '702-555-1212',
-      email: 'ahalthchar1.com',
-      service: 'health'
-  }
-  charities.push(charity);
-  var charity = {
-      name: 'charity health 3',
-      siteURL: 'http://google.com',
-      locate: {
-          lat: 36.165,
-          lng: -115.185
-      },
-      hoursOfOperation: '10am to 5pm',
-      phone: '702-555-1212',
-      email: 'a@char1.com',
-      service: 'health'
-  }
-  charities.push(charity);
 
   function convertMilesToMeters(miles) {
       return miles * 1609.34;
@@ -95,6 +33,9 @@
 
   var map;
   $('document').ready(function () {
+
+      getJSONCharities('All', 1, currentLocation.lat, currentLocation.lng);
+
       $("#selDistance").change(function () {
           resetMap();
       });
@@ -118,8 +59,20 @@
 
   });
 
+  $(window).resize(function () {
+      resetMap();
+  });
+
   function resetMap() {
       google.maps.event.trigger(map, 'resize');
+      if ($("#selDistance").val()) {
+          radius = $("#selDistance").val();
+      }
+
+      var serviceSelected = $("#selService").val();
+
+      getJSONCharities(serviceSelected, radius, currentLocation.lat, currentLocation.lng);
+
       initialize();
   }
 
@@ -127,10 +80,34 @@
   var radius = 1; //  default radius to 1 mile
   var mapCenter;
 
+  function getMarkerIconPath(charityService) {
+      var returnPath;
+
+      switch (charityService) {
+          case 'Food':
+              returnPath = foodMarker;
+              break;
+          case 'Health':
+              returnPath = healthMarker;
+              break;
+          case 'Shelter':
+              returnPath = shelterMarker;
+              break;
+          case 'Child Care':
+              returnPath = child_careMarker;
+              break;
+      }
+      return returnPath;
+  }
+
   function initialize() {
       if ($("#selDistance").val()) {
           radius = $("#selDistance").val();
       }
+
+      var serviceSelected = $("#selService").val();
+
+
 
       mapCenter = new google.maps.LatLng(currentLocation.lat, currentLocation.lng);
 
@@ -141,27 +118,28 @@
       map = new google.maps.Map(document.getElementById('map-canvas'),
           mapOptions);
 
-      var serviceSelected = $("#selService").val();
-
       for (i = 0; i < charities.length; i++) {
-          if (serviceSelected.toLowerCase() !== charities[i].service.toLowerCase()) {
-              continue;
-          }
+
+          var imgh = {
+              url: getMarkerIconPath(charities[i].services[0]),
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+          };
 
           var marker = new google.maps.Marker({
-              position: new google.maps.LatLng(charities[i].locate.lat, charities[i].locate.lng),
+              position: new google.maps.LatLng(charities[i].location.y, charities[i].location.x),
               map: map,
-              icon: {
-                  path: google.maps.SymbolPath.CIRCLE,
-                  scale: 10
-              },
+              icon: imgh,
               animation: google.maps.Animation.DROP,
               title: charities[i].name + ' ' + charities[i].email
           });
 
           google.maps.event.addListener(marker, 'click', (function (marker, i) {
               return function () {
-                  var contentStr = charities[i].name + '<br/>' + charities[i].hoursOfOperation + '<br/>' + charities[i].email + '<br/>' + charities[i].phone + '<br/><a href="' + charities[i].siteURL + '">' + charities[i].siteURL + '</a>';
+                  var contentStr = '<a href="/organizations/' + charities[i].id + '">' + charities[i].name + '</a>' +
+                      '<br/>' + charities[i].hours + '<br/>' + charities[i].phone + '<br/>' + charities[i].services.join(",");
 
                   var infowindow = new google.maps.InfoWindow({
                       content: contentStr
@@ -177,5 +155,17 @@
       map.fitBounds(circle.getBounds());
 
   } // initialize()
+
+  function getJSONCharities(charityService, radius, lat, lng) {
+      $.getJSON("/organizations/service/" + charityService + "?lat=" + lat + "&long=" + lng + "&dist=" + radius, function (data) {
+
+          charities = [];
+          $.each(data, function (key, val) {
+              charities.push(val);
+          });
+
+          initialize();
+      });
+  }
 
   google.maps.event.addDomListener(window, 'load', initialize);
