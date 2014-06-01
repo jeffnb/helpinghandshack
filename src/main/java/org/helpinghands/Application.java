@@ -210,6 +210,61 @@ public class Application {
         o13.addService("Health");
         organizationRepository.save(o13);
 
+        Organization o14 = new Organization();
+        o14.setAddress("1 New Place,\nLas Vegas, nv 89111");
+        o14.setEmail("organization1@test.com");
+        o14.setHours("Monday - Friday 8am - 5pm\nSaturday 5am-8am");
+        o14.setLocation(36.062339, -115.215490);
+        o14.setName("Helping Hands - 1");
+        o14.setPhone("(702) 555-1212");
+        o14.setWebsite("http://disney.com");
+        o14.addService("Food");
+        organizationRepository.save(o14);
+
+        Organization o15 = new Organization();
+        o15.setAddress("2 New Place,\nLas Vegas, nv 89111");
+        o15.setEmail("organization2@test.com");
+        o15.setHours("Monday - Friday 8am - 5pm\nSaturday 5am-8am");
+        o15.setLocation(36.066433, -115.212743);
+        o15.setName("Catholic Charities - 2");
+        o15.setPhone("(702) 555-1212");
+        o15.setWebsite("http://disney.com");
+        o15.addService("Education");
+        organizationRepository.save(o15);
+
+        Organization o16 = new Organization();
+        o16.setAddress("3 New Place,\nLas Vegas, nv 89111");
+        o16.setEmail("organization3@test.com");
+        o16.setHours("Monday - Friday 8am - 5pm\nSaturday 5am-8am");
+        o16.setLocation(36.064837, -115.210683);
+        o16.setName("Goodwill - 3");
+        o16.setPhone("(702) 555-1212");
+        o16.setWebsite("http://disney.com");
+        o16.addService("Health");
+        organizationRepository.save(o16);
+
+        Organization o17 = new Organization();
+        o17.setAddress("4 New Place,\nLas Vegas, nv 89111");
+        o17.setEmail("organization4@test.com");
+        o17.setHours("Monday - Friday 8am - 5pm\nSaturday 5am-8am");
+        o17.setLocation(36.062964, -115.223687);
+        o17.setName("Helping Hands - 4");
+        o17.setPhone("(702) 555-1212");
+        o17.setWebsite("http://disney.com");
+        o17.addService("Child Care");
+        organizationRepository.save(o17);
+
+        Organization o18 = new Organization();
+        o18.setAddress("5 New Place,\nLas Vegas, nv 89111");
+        o18.setEmail("organization5@test.com");
+        o18.setHours("Monday - Friday 8am - 5pm\nSaturday 5am-8am");
+        o18.setLocation(37.060986, -116.218558);
+        o18.setName("Helping Hands - 5");
+        o18.setPhone("(702) 555-1212");
+        o18.setWebsite("http://disney.com");
+        o18.addService("Health");
+        organizationRepository.save(o18);
+
         //Let's play with data
         Iterable<AvailableService> s = asRepository.findAll();
         System.out.println("Services Findall");
