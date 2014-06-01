@@ -1,7 +1,5 @@
 package org.helpinghands;
 
-import org.bson.util.annotations.Immutable;
-import com.sun.javafx.font.FontStrike;
 import org.helpinghands.Repositories.AvailableServiceRepository;
 import org.helpinghands.Repositories.OrganizationRepository;
 import org.helpinghands.models.AvailableService;
@@ -11,12 +9,9 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Metrics;
 import org.springframework.data.geo.Point;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import java.util.Arrays;
 import java.util.List;
