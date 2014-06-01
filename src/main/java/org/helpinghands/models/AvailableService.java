@@ -12,6 +12,12 @@ public class AvailableService {
 
     private String service;
 
+    public AvailableService(){}
+
+    public AvailableService(String service){
+        this.service = service;
+    }
+
     public String getId() {
         return id;
     }

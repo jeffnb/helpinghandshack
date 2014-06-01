@@ -1,7 +1,9 @@
 package org.helpinghands.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.geo.Point;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -20,8 +22,19 @@ public class Organization {
     private String email;
     private String address;
 
-    private double latitude;
-    private double longitude;
+    private Point location;
+
+    public Point getLocation() {
+        return location;
+    }
+
+    public void setLocation(Point location) {
+        this.location = location;
+    }
+
+    public void setLocation(double latitude, double longitude){
+        this.location = new Point(latitude, longitude);
+    }
 
     public String getId() {
         return id;
@@ -55,6 +68,14 @@ public class Organization {
         this.website = website;
     }
 
+    public void setWebsite(String website){
+        try {
+            this.website = new URL(website);
+        } catch (MalformedURLException e) {
+
+        }
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -77,22 +98,6 @@ public class Organization {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
     }
 
     @Override

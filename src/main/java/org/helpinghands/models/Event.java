@@ -1,6 +1,7 @@
 package org.helpinghands.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.geo.Point;
 
 import java.net.URL;
 
@@ -20,8 +21,19 @@ public class Event {
     private String descriptionLong;
     private double cost;
 
-    private double latitude;
-    private double longitude;
+    private Point location;
+
+    public Point getLocation() {
+        return location;
+    }
+
+    public void setLocation(Point location) {
+        this.location = location;
+    }
+
+    public void setLocation(double latitude, double longitude){
+        this.location = new Point(latitude, longitude);
+    }
 
     public String getId() {
         return id;
@@ -77,22 +89,6 @@ public class Event {
 
     public void setCost(double cost) {
         this.cost = cost;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
     }
 
     @Override
